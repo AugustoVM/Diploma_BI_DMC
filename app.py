@@ -6,3 +6,5 @@ st.sidebar.title("Parámetros")
 
 st.image("logophyton.png",width=250)
 st.sidebar.image("logoDMC.png",width=150)
+
+st.write("Elaborado por: Cesar Augusto Villarreal")
