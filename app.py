@@ -9,4 +9,4 @@ st.sidebar.image("logoDMC.png",width=150)
 
 st.write("Elaborado por: Cesar Augusto Villarreal")
 
-archivo=st.file_uploader("Cargué el archivo CSV o excel"
+archivo=st.file_uploader("Cargue el archivo CSV o excel")
