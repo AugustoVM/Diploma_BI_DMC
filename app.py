@@ -5,8 +5,9 @@ st.title("Proyecto final Diploma BI")
 st.sidebar.title("Parámetros")
 
 st.image("logophyton.png",width=250)
-st.sidebar.image("logoDMC.png",width=150)
+st.sidebar.image("logoDMC.png",width=120)
 
 st.write("Elaborado por: Cesar Augusto Villarreal")
 
-archivo=st.file_uploader("Cargue el archivo CSV o excel")
+archivo=st.file_uploader("Cargue el archivo CSV o Excel")
+
