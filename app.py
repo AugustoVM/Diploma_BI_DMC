@@ -17,10 +17,10 @@ if archivo is not None:
      data = pd.read_csv(archivo)
      st.write(data)
   elif archivo.name.endswith(".xlsx"):
-     data = pd.read_excel(archivo)
-     st.write(data)
+      data = pd.read_excel(archivo)
+      st.write(data)
   else: 
-     st.write("Formato no valido")
+       st.write("Formato no valido")
 
 else:
     st.write("Por favor cargue su archivo") 
