@@ -22,6 +22,6 @@ if archivo is not None:
   else: 
     st.write("Formato no valido")
 
-  else :
+  else:
     st.write("Por favor cargue su archivo") 
 
