@@ -30,11 +30,9 @@ if modulos == "Home":
 elif modulos == "Carga y perfil del dataset":
          
        archivo = st.file_uploader("Cargue el archivo excel o csv")
-
-       st.session_state.nombre_archivo=archivo.name
             
        if archivo is not None:
-              
+              st.session_state.nombre_archivo=archivo.name    
               if archivo.name.endswith(".csv"):
                  data = pd.read_csv(archivo)
                  st.write(data)
