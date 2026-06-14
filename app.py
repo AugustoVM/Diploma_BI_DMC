@@ -8,18 +8,3 @@ st.image("logophyton.png",width=250)
 st.sidebar.image("logoDMC.png",width=120)
 
 st.write("Elaborado por: Cesar Augusto Villarreal")
-
-archivo=st.file_uploader("Cargue el archivo CSV o Excel")
-
-if archivo is not None :
-  
-  if archivo.name.endswith(".csv"):
-        data=pd.read_csv(archivo)
-    
-  elif archivo.name.endswith(".xlsx"):
-        data=pd.read_excel(archivo)
-  else :
-  st.write("formato no valido")
-
-else:
-  st.write("Por favor cargue su archivo")
