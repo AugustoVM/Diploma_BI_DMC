@@ -13,7 +13,7 @@ st.write("Elaborado por: Cesar Augusto Villarreal")
 modulos=st.sidebar.selectbox("Seleccione un modulo",["Home","Carga y perfil del dataset","Procesamiento de datos","Analisis visual"]) #es un modulo que me permitira mostrra un dspliegue de distitas eclecciones a traves de una lista
 
 if modulos == "Home":
-       st.write("Bienvenido a la aplicación, Este proyecto final tiene como entregable principal una aplicación interactiva construida en Python con Streamlit. La aplicación debe permitir cargar, validar, procesar y visualizar datos de manera dinámica, integrando los conceptos desarrollados durante el curso. El objetivo NO es construir un modelo predictivo obligatorio, sino desarrollar una herramienta analítica funcional, clara, ordenada y similar a un producto real de análisis exploratorio de datos. Las tecnologias usadas son las librerias Streamlist y Pandas")
+       st.write("Bienvenido a la aplicación, esta herramienta es una aplicación interactiva construida en Python con Streamlit. La aplicación permite cargar, validar, procesar y visualizar datos de manera dinámica. En resumen es un herramienta funcional, clara, ordenada y similar a un producto real de análisis exploratorio de datos. Las tecnologias usadas son las librerias Streamlist y Pandas")
        
 elif modulos == "Carga y perfil del dataset":
          
