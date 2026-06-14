@@ -10,6 +10,9 @@ st.sidebar.image("logoDMC.png",width=120)
 
 st.write("Elaborado por: Cesar Augusto Villarreal")
 
+modulos=st.selectbox("Seleccione un modulo",["Home","Carga y perfil del dataset","Procesamiento de datos","Anlisis visual"]) #es un modulo que me permitira mostrra un dspliegue de distitas eclecciones a traves de una lista
+
+
 archivo= st.file_uploader("Cargue el archivo excel o csv")
 
 if archivo is not None:
