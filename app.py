@@ -1,5 +1,12 @@
 import streamlit as st
 import pandas as pd
+
+if "data" not in st.session_state:
+    st.session_state.data = None
+
+if "nombre_archivo" not in st.session_state:
+    st.session_state.nombre_archivo = None
+
 #Incluir titutlo
 st.title("Proyecto final Diploma BI")
 #incluir titulo en una barra lateral
@@ -14,10 +21,17 @@ modulos=st.sidebar.selectbox("Seleccione un modulo",["Home","Carga y perfil del 
 
 if modulos == "Home":
        st.write("Bienvenido a la aplicación, esta herramienta es una aplicación interactiva construida en Python con Streamlit. La aplicación permite cargar, validar, procesar y visualizar datos de manera dinámica. En resumen es un herramienta funcional, clara, ordenada y similar a un producto real de análisis exploratorio de datos. Las tecnologias usadas son las librerias Streamlist y Pandas")
-       
+
+       if st.session_state.data is not None:
+           st.success(f"Dataset cargado: {st.session_state.nombre_archivo}")
+       else:
+           st.info("Aun no se ha cargado ningun dataset")
+
 elif modulos == "Carga y perfil del dataset":
          
        archivo = st.file_uploader("Cargue el archivo excel o csv")
+
+       st.session_state.nombre_archivo=archivo.name
             
        if archivo is not None:
               
@@ -33,3 +47,48 @@ elif modulos == "Carga y perfil del dataset":
        else:
                 st.write("Por favor cargue su archivo") 
 
+elif modulos == "Procesamiento de datos":
+
+    st.subheader("Procesamiento de datos")
+
+
+    if st.session_state.data is not None:
+
+
+        data = st.session_state.data
+
+
+        st.write("Dataset disponible para procesamiento:")
+
+        st.dataframe(data)
+
+
+        st.write("Valores nulos por columna:")
+
+        st.write(data.isnull().sum())
+
+    else:
+        st.warning("Primero debe cargar un dataset en el módulo 'Carga y perfil del dataset'.")
+
+# ==============================
+
+# MÓDULO ANÁLISIS VISUAL
+
+# ==============================
+
+
+elif modulos == "Análisis visual":
+
+    st.subheader("Análisis visual")
+
+    if st.session_state.data is not None:
+
+        data = st.session_state.data
+
+        st.write("Dataset disponible para análisis visual:")
+
+        st.dataframe(data)
+
+    else:
+
+        st.warning("Primero debe cargar un dataset en el módulo 'Carga y perfil del dataset'.")
