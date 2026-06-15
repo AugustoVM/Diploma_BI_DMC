@@ -117,31 +117,6 @@ elif modulos == "Carga y perfil del dataset":
 
 
 # ==============================
-# MÓDULO PROCESAMIENTO DE DATOS
-# ==============================
-
-elif modulos == "Procesamiento de datos":
-
-    st.subheader("Procesamiento de datos")
-
-    if st.session_state.data is not None:
-
-        data = st.session_state.data
-
-        st.write("Dataset disponible para procesamiento:")
-        st.dataframe(data)
-
-        st.write("Valores nulos por columna:")
-        st.write(data.isnull().sum())
-
-    else:
-        st.warning(
-            "Primero debe cargar un dataset en el módulo "
-            "'Carga y perfil del dataset'."
-        )
-
-
-# ==============================
 # MÓDULO ANÁLISIS VISUAL
 # ==============================
 
@@ -151,6 +126,9 @@ elif modulos == "Análisis visual":
 
     if st.session_state.data is not None:
 
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+
         data = st.session_state.data
 
         st.write("Dataset disponible para análisis visual:")
@@ -159,27 +137,86 @@ elif modulos == "Análisis visual":
         # Columnas numéricas
         lista_columna_numerica = data.select_dtypes(include="number").columns.tolist()
 
+        # Columnas categóricas
+        lista_columna_categorica = data.select_dtypes(include=["object", "category"]).columns.tolist()
+
+        # ==========================
+        # SELECCIÓN DE VARIABLES
+        # ==========================
+
         if lista_columna_numerica:
             variable_numerica = st.selectbox(
-                "Seleccione la columna numérica",
+                "Seleccione una columna numérica",
                 lista_columna_numerica
             )
         else:
             st.info("No hay columnas numéricas en el dataset")
 
-        # Columnas categóricas
-        lista_columna_categorica = data.select_dtypes(include=["object", "category"]).columns.tolist()
-
         if lista_columna_categorica:
             variable_categorica = st.selectbox(
-                "Seleccione la columna categórica",
+                "Seleccione una columna categórica",
                 lista_columna_categorica
             )
         else:
             st.info("No hay columnas categóricas en el dataset")
 
+        st.markdown("---")
+
+        # ==========================
+        # SELECCIÓN DEL TIPO DE GRÁFICO
+        # ==========================
+
+        tipo_grafico = st.selectbox(
+            "Seleccione el tipo de gráfico",
+            ["Histograma", "Boxplot", "Gráfico de líneas", "Gráfico de dispersión", "Gráfico de barras"]
+        )
+
+        st.markdown("---")
+
+        # ==========================
+        # GENERACIÓN DE GRÁFICOS
+        # ==========================
+
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+        # HISTOGRAMA
+        if tipo_grafico == "Histograma":
+            sns.histplot(data[variable_numerica], kde=True, ax=ax)
+            ax.set_title(f"Histograma de {variable_numerica}")
+
+        # BOXPLOT
+        elif tipo_grafico == "Boxplot":
+            sns.boxplot(x=data[variable_numerica], ax=ax)
+            ax.set_title(f"Boxplot de {variable_numerica}")
+
+        # GRÁFICO DE LÍNEAS
+        elif tipo_grafico == "Gráfico de líneas":
+            ax.plot(data[variable_numerica])
+            ax.set_title(f"Gráfico de líneas de {variable_numerica}")
+            ax.set_xlabel("Índice")
+            ax.set_ylabel(variable_numerica)
+
+        # DISPERSIÓN
+        elif tipo_grafico == "Gráfico de dispersión":
+            otra_numerica = st.selectbox(
+                "Seleccione otra columna numérica para el eje Y",
+                lista_columna_numerica
+            )
+            sns.scatterplot(x=data[variable_numerica], y=data[otra_numerica], ax=ax)
+            ax.set_title(f"Dispersión: {variable_numerica} vs {otra_numerica}")
+
+        # BARRAS
+        elif tipo_grafico == "Gráfico de barras":
+            sns.barplot(x=data[variable_categorica], y=data[variable_numerica], ax=ax)
+            ax.set_title(f"Barras: {variable_categorica} vs {variable_numerica}")
+            plt.xticks(rotation=45)
+
+        st.pyplot(fig)
+
     else:
         st.warning(
-            "Primero debe cargar un dataset en el módulo "
-            "'Carga y perfil del dataset'."
+            "Primero debe cargar un dataset en el módulo 'Carga y perfil del dataset'."
         )
+c
+c
+c
