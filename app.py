@@ -217,5 +217,3 @@ elif modulos == "Análisis visual":
         st.warning(
             "Primero debe cargar un dataset en el módulo 'Carga y perfil del dataset'."
         )
-c
-c
