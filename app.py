@@ -30,7 +30,8 @@ st.sidebar.image("logoDMC.png", width=100)
 
 st.write("Elaborado por: Cesar Augusto Villarreal Meza")
 st.write("14.06.2026 - Modulo de Exploracion y visualizacion de datos con phyton")
-
+st.write("Enlace Github: https://github.com/AugustoVM/Diploma_BI_DMC")
+st.write("Enlace Streamlit: https://diplomabidmc-cesarvillarreal.streamlit.app/")
 
 # ==============================
 # MENÚ DE MÓDULOS
