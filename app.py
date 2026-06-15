@@ -28,7 +28,7 @@ st.sidebar.title("Parámetros")
 st.image("logophyton.png", width=500)
 st.sidebar.image("logoDMC.png", width=100)
 
-st.write("Elaborado por: Carlos Carrillo")
+st.write("Elaborado por: Cesar Augusto Villarreal Meza")
 
 
 # ==============================
@@ -47,7 +47,7 @@ modulos = st.sidebar.selectbox(
 
 if modulos == "Home":
 
-    st.write("Bienvenido a la aplicación")
+    st.write("Bienvenido a la aplicación de analisis de datos. en esta aplicacion podras encontrar cuantro moduslos que te serviran para cargar, validar, procesar y visualizar datos. Esta aplicacion esta basado en el uso de las tecnologias de las librerias de streamlit, pandas, plotly, matplotly y seaborn ")
 
     if st.session_state.data is not None:
         st.success(f"Dataset cargado: {st.session_state.nombre_archivo}")
