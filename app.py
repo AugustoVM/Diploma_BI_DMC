@@ -219,4 +219,3 @@ elif modulos == "Análisis visual":
         )
 c
 c
-c
