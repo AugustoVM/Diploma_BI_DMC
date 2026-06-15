@@ -29,7 +29,7 @@ st.image("logophyton.png", width=500)
 st.sidebar.image("logoDMC.png", width=100)
 
 st.write("Elaborado por: Cesar Augusto Villarreal Meza")
-st.write("14.06.2026 - Modulo de Exploracion y visualizacion de datos con phyton"
+st.write("14.06.2026 - Modulo de Exploracion y visualizacion de datos con phyton")
 
 
 # ==============================
